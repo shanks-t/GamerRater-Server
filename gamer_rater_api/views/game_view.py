@@ -17,6 +17,13 @@ class GameView(ViewSet):
             games, many=True, context={'request': request})
         return Response(serializer.data)
 
+
+    def retrieve(self, request, pk=None):
+        game = Game.objects.get(pk=pk)
+        serializer = GameSerializer(game, context={'request': request})
+        return Response(serializer.data)
+
+
 class GameSerializer(serializers.ModelSerializer):
 
     class Meta:
