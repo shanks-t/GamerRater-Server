@@ -1,0 +1,93 @@
+[
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   1,
+        "fields": {
+            "label": "Murderous"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   2,
+        "fields": {
+            "label": "Macabre"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   3,
+        "fields": {
+            "label": "Cerebral"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   4,
+        "fields": {
+            "label": "Belicose"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   5,
+        "fields": {
+            "label": "Strategy"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   6,
+        "fields": {
+            "label": "Dice"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   7,
+        "fields": {
+            "label": "Card"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   8,
+        "fields": {
+            "label": "Miniature"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   9,
+        "fields": {
+            "label": "Role Playing"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   10,
+        "fields": {
+            "label": "Sports"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   11,
+        "fields": {
+            "label": "Adventure"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   12,
+        "fields": {
+            "label": "Cooperative"
+        }
+    },
+    {
+        "model": "gamer_rater_api.category",
+        "pk":   13,
+        "fields": {
+            "label": "Battle"
+        }
+    }
+]
