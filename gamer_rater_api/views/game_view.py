@@ -5,7 +5,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from gamer_rater_api.models import Game, Category
+from gamer_rater_api.models import Game, Category, GameCategory
 
 
 class GameView(ViewSet):
@@ -24,8 +24,8 @@ class GameView(ViewSet):
         return Response(serializer.data)
 
     def create(self, request):
+        # category_id = GameCategory.objects.get(pk=request.data['categoryId'])
         category = Category.objects.get(pk=request.data['categoryId'])
-
 
         try:
             game = Game.objects.create(
@@ -33,8 +33,9 @@ class GameView(ViewSet):
                 designer=request.data['designer'],
                 year_released=request.data['yearReleased'],
                 age_recommendation=request.data['ageRecommendation'],
-                category=category
+                play_time =request.data['playTime']
             )
+            game.categories.add(category)
             serializer = GameSerializer(game, context={'request': request})
             return Response(serializer.data)
         
@@ -43,8 +44,13 @@ class GameView(ViewSet):
 
 
 
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = ('id', 'label')
 
 class GameSerializer(serializers.ModelSerializer):
+    categories = CategorySerializer(many=True)
     class Meta:
         model = Game
-        fields = ('id', 'title', 'designer', 'year_released', 'play_time', 'age_recommendation')
+        fields = ('id', 'title', 'designer', 'year_released', 'play_time', 'age_recommendation', 'categories')
