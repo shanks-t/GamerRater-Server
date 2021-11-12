@@ -10,14 +10,13 @@ class ReviewView(ViewSet):
 
     def create(self, request):
         # category_id = GameCategory.objects.get(pk=request.data['categoryId'])
-        player = Player.objects.get(pk=request.data['playerId'])
+        player = Player.objects.get(user=request.auth.user)
         game = Game.objects.get(pk=request.data['gameId'])
 
         try:
             review = Review.objects.create(
                 title=request.data['title'],
                 game_review=request.data['gameReview'],
-                game_rating=request.data['gameRating'],
                 player_id=player,
                 game_id=game
             )

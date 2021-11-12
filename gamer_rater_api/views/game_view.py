@@ -35,6 +35,7 @@ class GameView(ViewSet):
                 age_recommendation=request.data['ageRecommendation'],
                 play_time =request.data['playTime']
             )
+            # game.categories.set(request.data['category_ids'])
             game.categories.add(category)
             serializer = GameSerializer(game, context={'request': request})
             return Response(serializer.data)
