@@ -61,6 +61,23 @@ class GameView(ViewSet):
         except Exception as ex:
             return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+    def update(self, request, pk=None):
+ 
+        game = Game.objects.get(pk=pk)
+        game.title = request.data["title"]
+        game.designer = request.data["designer"]
+        game.year_released = request.data["yearReleased"]
+        game.play_time = request.data["playTime"]
+        game.age_recommendation = request.data["ageRecommendation"]
+        # game.categories = request.data["categoryIds"]
+
+        # categories = Category.objects.filter(pk=request.data["categoryIds"])
+        # game.categories = categories
+        game.save()
+
+   
+        return Response({'way to PUT'}, status=status.HTTP_204_NO_CONTENT)
+
     @action(methods=['POST'], detail=True)
     def rate_game(self, request, pk):
         """Managing gamers signing up for events"""
