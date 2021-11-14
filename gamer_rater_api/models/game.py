@@ -9,7 +9,22 @@ class Game(models.Model):
     play_time = models.DecimalField(max_digits=5, decimal_places=2)
     age_recommendation = models.IntegerField()
     categories = models.ManyToManyField(Category)
-    average_rating = models.IntegerField(default=0)
 
-    def __str__(self):
-        return self.title 
+    @property
+    def average_rating(self):
+        """Average rating calculated attribute for each game"""
+        ratings = GameRating.objects.filter(game_id=self.id)
+        # Sum all of the ratings for the game
+        total_rating = 0
+        if ratings:
+            for rating in ratings:
+                total_rating += rating.rating
+            average = total_rating / len(ratings)
+        else:
+            average = 0
+            
+
+        return average
+
+        # Calculate the averge and return it.
+        # If you don't know how to calculate averge, Google it.

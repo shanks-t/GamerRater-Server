@@ -1,5 +1,6 @@
 from typing import Reversible
 from django.core.exceptions import ValidationError
+from django.db.models.fields import IntegerField
 from rest_framework import status
 from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
@@ -44,29 +45,10 @@ class GameView(ViewSet):
         except ValidationError as ex:
             return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)
 
-    @property
-    def average_rating(self):
-        """Average rating calculated attribute for each game"""
-        ratings = GameRating.objects.filter(game=self)
-
-        # Sum all of the ratings for the game
-        total_rating = 0
-        count = 0
-        for rating in ratings:
-            total_rating += rating.rating
-            count += 1
-
-        average = total_rating/count
-        return self.average_rating.add(average)
-        
-
-        # Calculate the averge and return it.
-        # If you don't know how to calculate averge, Google it.
-
 class RatingsSerializer(serializers.ModelSerializer):
     class Meta:
         model = GameRating
-        fields = ('id', 'rating')
+        fields = ('id', 'rating', )
 
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -81,7 +63,7 @@ class ReviewSerializer(serializers.ModelSerializer):
 class GameSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(many=True)
     reviews = ReviewSerializer(many=True)
-    ratings = RatingsSerializer(many=True)
+    #ratings = RatingsSerializer(many=True)
     class Meta:
         model = Game
-        fields = ('id', 'title', 'designer', 'year_released', 'play_time', 'age_recommendation', 'categories', 'reviews', 'ratings')
+        fields = ('id', 'title', 'designer', 'year_released', 'play_time', 'age_recommendation', 'categories', 'reviews', 'average_rating' )
