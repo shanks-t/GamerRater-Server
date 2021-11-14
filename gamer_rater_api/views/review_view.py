@@ -6,6 +6,8 @@ from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
 from gamer_rater_api.models import Review, Player, Game
+
+
 class ReviewView(ViewSet):
 
     def create(self, request):
@@ -31,6 +33,11 @@ class ReviewView(ViewSet):
 
         serializer = ReviewSerializer(
             reviews, many=True, context={'request': request})
+        return Response(serializer.data)
+
+    def retrieve(self, request, pk=None):
+        review = Review.objects.get(pk=pk)
+        serializer = ReviewSerializer(review, context={'request': request})
         return Response(serializer.data)
 
 class ReviewSerializer(serializers.ModelSerializer):
