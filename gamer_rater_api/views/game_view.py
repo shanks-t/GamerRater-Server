@@ -1,13 +1,15 @@
 from typing import Reversible
 from django.core.exceptions import ValidationError
 from django.db.models.fields import IntegerField
-from rest_framework import status
 from django.http import HttpResponseServerError
+
+from rest_framework.decorators import action
+from rest_framework import status
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework import status
-from gamer_rater_api.models import Game, Category, GameCategory, Review, GameRating
+from gamer_rater_api.models import Game, Category, GameCategory, Review, GameRating, Player
 
 
 class GameView(ViewSet):
@@ -44,6 +46,22 @@ class GameView(ViewSet):
         
         except ValidationError as ex:
             return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)
+
+    @action(methods=['POST'], detail=True)
+    def rate_game(self, request, pk):
+        """Managing gamers signing up for events"""
+        # Django uses the `Authorization` header to determine
+        # which user is making the request to sign up
+        player = Player.objects.get(user=request.auth.user)
+        game = Game.objects.get(pk=pk)
+        game_rating = GameRating.objects.create(
+            rating=request.data['rating'],
+            game_id=game,
+            player_id=player
+        )
+        serializer = RatingsSerializer(game_rating, context={'request': request})
+        return Response(serializer.data)
+
 
 class RatingsSerializer(serializers.ModelSerializer):
     class Meta:
