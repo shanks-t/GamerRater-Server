@@ -1,0 +1,10 @@
+[
+    {
+        "model": "gamer_rater_api.player",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "name": "T-sizzle"
+        }
+    }
+]

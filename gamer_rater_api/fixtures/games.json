@@ -1,0 +1,35 @@
+[
+    {
+        "model": "gamer_rater_api.game",
+        "pk": 1,
+        "fields": {
+            "title": "Call of Snooty",
+            "designer": "Violent Games Inc.",
+            "year_released": 2001,
+            "play_time": 4.00,
+            "age_recommendation": 8
+        }
+    },
+    {
+        "model": "gamer_rater_api.game",
+        "pk": 2,
+        "fields": {
+            "title": "SnortNite",
+            "designer": "Violent Games Inc.",
+            "year_released": 2017,
+            "play_time": 1.00,
+            "age_recommendation": 8
+        }
+    },
+    {
+        "model": "gamer_rater_api.game",
+        "pk": 3,
+        "fields": {
+            "title": "CyberPunk",
+            "designer": "Heady Shit Inc.",
+            "year_released": 2020,
+            "play_time": 11.00,
+            "age_recommendation": 16
+        }
+    }
+]

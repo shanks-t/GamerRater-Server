@@ -1,0 +1,29 @@
+[
+    {
+        "model": "gamer_rater_api.gameimage",
+        "pk": 1,
+        "fields": {
+            "image": "babyGun.jpeg",
+            "player_id": 1,
+            "game_id": 1
+        }
+    },
+    {
+        "model": "gamer_rater_api.gameimage",
+        "pk": 1,
+        "fields": {
+            "image": "cypherpunk.jpeg",
+            "player_id": 1,
+            "game_id": 1
+        }
+    },
+    {
+        "model": "gamer_rater_api.gameimage",
+        "pk": 1,
+        "fields": {
+            "image": "kidplayingfortnite.jpeg",
+            "player_id": 1,
+            "game_id": 1
+        }
+    }
+]

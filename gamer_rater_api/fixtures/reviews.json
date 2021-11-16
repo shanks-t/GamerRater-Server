@@ -1,0 +1,35 @@
+[
+    {
+        "model": "gamer_rater_api.review",
+        "pk": 1,
+        "fields": {
+            "title": "Why I love Call of Snooty",
+            "game_review": "This game is so cool. I love being able to shoot people in the face with no real consequences",
+            "game_rating": 86,
+            "player_id": 1,
+            "game_id": 1
+        }
+    },
+    {
+        "model": "gamer_rater_api.review",
+        "pk": 2,
+        "fields": {
+            "title": "SnortNite is the snortiest!",
+            "game_review": "All my friends play Snortnite. We shoot each other with digital weapons in a digital world. I'm addicted to my screen.",
+            "game_rating": 88,
+            "player_id": 1,
+            "game_id": 2
+        }
+    },
+    {
+        "model": "gamer_rater_api.review",
+        "pk": 3,
+        "fields": {
+            "title": "The best murder game ever",
+            "game_review": "I love how much murder I get to do in this game. Just last night I murdered about 500 people. Geneva convention schmaschmeva convention.",
+            "game_rating": 99,
+            "player_id": 1,
+            "game_id": 1
+        }
+    }
+]
