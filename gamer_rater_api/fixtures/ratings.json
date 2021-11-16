@@ -1,0 +1,38 @@
+[
+    {
+        "model": "gamer_rater_api.gamerating",
+        "pk":   1,
+        "fields": {
+            "rating": 9,
+            "game_id": 2,
+            "player_id": 1
+        }
+    },
+    {
+        "model": "gamer_rater_api.gamerating",
+        "pk":   2,
+        "fields": {
+            "rating": 6,
+            "game_id": 2,
+            "player_id": 1
+        }
+    },
+    {
+        "model": "gamer_rater_api.gamerating",
+        "pk":   3,
+        "fields": {
+            "rating": 6,
+            "game_id": 2,
+            "player_id": 1
+        }
+    },
+    {
+        "model": "gamer_rater_api.gamerating",
+        "pk":   4,
+        "fields": {
+            "rating": 6,
+            "game_id": 3,
+            "player_id": 1
+        }
+    }
+]
