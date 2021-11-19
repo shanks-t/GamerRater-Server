@@ -4,6 +4,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
+from rest_framework import status
 
 from gamer_rater_api.models import Player
 
@@ -56,7 +57,7 @@ def register_user(request):
 
     # Now save the extra info in the levelupapi_gamer table
     player = Player.objects.create(
-        bio=request.data['bio'],
+        name=request.data['name'],
         user=new_user
     )
 
@@ -64,5 +65,4 @@ def register_user(request):
     token = Token.objects.create(user=player.user)
     # Return the token to the client
     data = { 'token': token.key }
-    return Response(data)
-
+    return Response(data, status=status.HTTP_201_CREATED)

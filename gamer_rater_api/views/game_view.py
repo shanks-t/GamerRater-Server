@@ -42,7 +42,7 @@ class GameView(ViewSet):
             # game.categories.set(request.data['category_ids'])
             game.categories.add(category)
             serializer = GameSerializer(game, context={'request': request})
-            return Response(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
         
         except ValidationError as ex:
             return Response({'reason': ex.message}, status=status.HTTP_400_BAD_REQUEST)
@@ -94,6 +94,11 @@ class GameView(ViewSet):
         return Response(serializer.data)
 
 
+class PlayerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Player
+        fields = ('id', )
+
 class RatingsSerializer(serializers.ModelSerializer):
     class Meta:
         model = GameRating
@@ -105,6 +110,7 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = ('id', 'label')
 
 class ReviewSerializer(serializers.ModelSerializer):
+    player_id = PlayerSerializer(many=False)
     class Meta: 
         model = Review
         fields = ('id', 'title', 'game_review', 'game_id', 'player_id')
